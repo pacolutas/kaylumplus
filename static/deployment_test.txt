@@ -1,0 +1,4 @@
+Deployment Verification File
+Date: 2026-01-12
+Version: 2.0
+If you can see this, Vercel IS deploying files correctly.
