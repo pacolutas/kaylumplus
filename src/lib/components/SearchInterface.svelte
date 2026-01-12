@@ -41,7 +41,8 @@
 		Play,
 		Shuffle,
 		Copy,
-		Code
+		Code,
+		ScrollText
 	} from 'lucide-svelte';
 
 	import { searchStore, type SearchTab } from '$lib/stores/searchStore.svelte';
