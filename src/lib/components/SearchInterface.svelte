@@ -5,7 +5,6 @@
 	import { downloadAlbum, getExtensionForQuality } from '$lib/downloads';
 	import { formatArtists } from '$lib/utils';
 	import { playerStore } from '$lib/stores/player';
-	import { playerStore } from '$lib/stores/player';
 	import { downloadUiStore } from '$lib/stores/downloadUi';
 	import { downloadPreferencesStore } from '$lib/stores/downloadPreferences';
 	import { userPreferencesStore } from '$lib/stores/userPreferences';

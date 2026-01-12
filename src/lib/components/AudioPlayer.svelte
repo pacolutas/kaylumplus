@@ -523,20 +523,23 @@
 			console.log('[AudioPlayer] Stream data received:', streamData);
 			
 			// Critical Fix: Use proxy for playback to handle CORS/Auth
-			let url = getProxiedUrl(streamData.url);
-			console.log('[AudioPlayer] Proxied URL:', url);
+			let finalUrl = getProxiedUrl(streamData.url);
+			console.log('[AudioPlayer] Proxied URL:', finalUrl);
 			
 			// Update cache
-			cacheStream(track.id, quality, url);
+			cacheStream(track.id, quality, finalUrl);
 
 			if (audioElement) {
-				audioElement.src = url;
+				// Update state instead of direct DOM manipulation to keep Svelte in sync
+				streamUrl = finalUrl;
 				currentPlaybackQuality = quality;
-				// Update metadata labels
 				
 				if ($playerStore.isPlaying) {
 					console.log('[AudioPlayer] Auto-playing new track');
-					audioElement.play().catch(e => console.error('[AudioPlayer] Play failed', e));
+					// Wait a tick for Svelte to update the DOM src attribute
+					setTimeout(() => {
+						audioElement.play().catch(e => console.error('[AudioPlayer] Play failed', e));
+					}, 0);
 				}
 			} else {
 				console.error('[AudioPlayer] Audio element is missing!');
