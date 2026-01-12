@@ -147,11 +147,14 @@ function createPlayerStore() {
 		setLoading: (isLoading: boolean) => update((state) => ({ ...state, isLoading })),
 		setQueue: (queue: PlayableTrack[], startIndex: number = 0) =>
 			update((state) => {
+				console.log('[PlayerStore] setQueue called with', queue.length, 'tracks. Start index:', startIndex);
 				const hasTracks = queue.length > 0;
 				const clampedIndex = hasTracks
 					? Math.min(Math.max(startIndex, 0), queue.length - 1)
 					: -1;
 				const nextTrack = hasTracks ? queue[clampedIndex]! : null;
+				console.log('[PlayerStore] Next track:', nextTrack?.title);
+
 				let next: PlayerState = {
 					...state,
 					queue,

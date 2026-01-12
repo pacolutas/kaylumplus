@@ -499,13 +499,13 @@
 			const cachedUrl = getCachedStream(track.id, quality);
 			if (cachedUrl) {
 				console.log('[AudioPlayer] Using cached URL:', cachedUrl);
-				if (audio) {
-					audio.src = cachedUrl;
+				if (audioElement) {
+					audioElement.src = cachedUrl;
 					currentPlaybackQuality = quality;
 					
 					if ($playerStore.isPlaying) {
 						console.log('[AudioPlayer] Auto-playing cached track');
-						const playPromise = audio.play();
+						const playPromise = audioElement.play();
 						if (playPromise !== undefined) {
 							playPromise.catch((e) => {
 								console.error('[AudioPlayer] Play error (cached):', e);
@@ -529,14 +529,14 @@
 			// Update cache
 			cacheStream(track.id, quality, url);
 
-			if (audio) {
-				audio.src = url;
+			if (audioElement) {
+				audioElement.src = url;
 				currentPlaybackQuality = quality;
 				// Update metadata labels
 				
 				if ($playerStore.isPlaying) {
 					console.log('[AudioPlayer] Auto-playing new track');
-					audio.play().catch(e => console.error('[AudioPlayer] Play failed', e));
+					audioElement.play().catch(e => console.error('[AudioPlayer] Play failed', e));
 				}
 			} else {
 				console.error('[AudioPlayer] Audio element is missing!');
