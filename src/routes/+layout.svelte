@@ -147,6 +147,7 @@
 	// Update page title with currently playing song
 	$effect(() => {
 		if (typeof document === 'undefined') return;
+		console.log('--- KAYLUM ULTRA V.2 LOADED ---');
 		
 		const track = $playerStore.currentTrack;
 		const isPlaying = $playerStore.isPlaying;
