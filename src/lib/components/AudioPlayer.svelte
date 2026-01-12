@@ -473,7 +473,7 @@
 		}
 	});
 
-	$effect(() => {
+
 	async function loadTrack(track: PlayableTrack) {
 		// CRITICAL: Never try to load a SonglinkTrack - it must be converted first
 		if (isSonglinkTrack(track)) {
