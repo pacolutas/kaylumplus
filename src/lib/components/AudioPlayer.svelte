@@ -1049,6 +1049,69 @@
 		}
 	}
 
+	function handleTimeUpdate() {
+		if (!audioElement || isSeeking) return;
+		
+		const currentTime = audioElement.currentTime;
+		if (Math.abs(currentTime - $playerStore.currentTime) > 0.5 || currentTime === 0) {
+			playerStore.setCurrentTime(currentTime);
+			updateMediaSessionPositionState();
+		}
+	}
+
+	function handleDurationChange() {
+		if (audioElement) {
+			playerStore.setDuration(audioElement.duration || 0);
+			updateMediaSessionPositionState();
+		}
+	}
+
+	function handleLoadedData() {
+		if (audioElement) {
+			playerStore.setLoading(false);
+			if ($playerStore.isPlaying) {
+				audioElement.play().catch(e => console.error('Auto-play failed', e));
+			}
+		}
+	}
+
+	function updateBufferedPercent() {
+		if (!audioElement || !audioElement.duration) {
+			bufferedPercent = 0;
+			return;
+		}
+		if (audioElement.buffered.length > 0) {
+			const bufferedEnd = audioElement.buffered.end(audioElement.buffered.length - 1);
+			bufferedPercent = (bufferedEnd / audioElement.duration) * 100;
+		}
+	}
+
+	function handleProgress() {
+		updateBufferedPercent();
+	}
+
+	function handleAudioError(e: Event) {
+		console.error('Audio error handler triggered', e);
+		if (audioElement && audioElement.error) {
+			console.error('Audio element error details:', audioElement.error);
+			const code = audioElement.error.code;
+			const message = audioElement.error.message;
+			
+			// Retry once for network errors if strict mode isn't on
+			// ... (simplified logic)
+			playerStore.pause();
+			// Only alert if it's a real error and not just an abort
+			if (code !== 20) { // Abort
+				alert(`Error de reproducción: ${message || 'Error desconocido'}`);
+			}
+		}
+	}
+	
+	function getPercent(value: number, total: number): number {
+		if (!total) return 0;
+		return Math.min(100, Math.max(0, (value / total) * 100));
+	}
+
 	function asTrack(track: PlayableTrack): Track {
 		return track as Track;
 	}
