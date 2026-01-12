@@ -493,22 +493,22 @@
 	}
 
 	async function loadStandardTrack(track: PlayableTrack, quality: AudioQuality) {
+		console.log('[AudioPlayer] Loading standard track:', track.title, 'Quality:', quality);
 		try {
 			// Check cache first
 			const cachedUrl = getCachedStream(track.id, quality);
 			if (cachedUrl) {
+				console.log('[AudioPlayer] Using cached URL:', cachedUrl);
 				if (audio) {
 					audio.src = cachedUrl;
 					currentPlaybackQuality = quality;
-					// Update metadata labels
-
 					
 					if ($playerStore.isPlaying) {
+						console.log('[AudioPlayer] Auto-playing cached track');
 						const playPromise = audio.play();
 						if (playPromise !== undefined) {
 							playPromise.catch((e) => {
-								console.error('Play error:', e);
-								// If play fails, pause global state
+								console.error('[AudioPlayer] Play error (cached):', e);
 								playerStore.pause();
 							});
 						}
@@ -518,10 +518,13 @@
 			}
 
 			const api = LosslessAPI.getInstance();
+			console.log('[AudioPlayer] Fetching stream data from API...');
 			const streamData = await api.getStreamData(track.id, quality);
+			console.log('[AudioPlayer] Stream data received:', streamData);
 			
 			// Critical Fix: Use proxy for playback to handle CORS/Auth
 			let url = getProxiedUrl(streamData.url);
+			console.log('[AudioPlayer] Proxied URL:', url);
 			
 			// Update cache
 			cacheStream(track.id, quality, url);
@@ -532,13 +535,16 @@
 				// Update metadata labels
 				
 				if ($playerStore.isPlaying) {
-					audio.play().catch(e => console.error('Play failed', e));
+					console.log('[AudioPlayer] Auto-playing new track');
+					audio.play().catch(e => console.error('[AudioPlayer] Play failed', e));
 				}
+			} else {
+				console.error('[AudioPlayer] Audio element is missing!');
 			}
 		} catch (error) {
-			console.error('Failed to load standard track:', error);
+			console.error('[AudioPlayer] Failed to load standard track:', error);
 			playerStore.pause();
-			alert('Error al cargar la pista.'); // Simple error message in Spanish
+			alert('Error al cargar la pista: ' + (error instanceof Error ? error.message : String(error)));
 		}
 	}
 

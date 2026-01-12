@@ -31,7 +31,7 @@
 	import { type Track, type AudioQuality, type PlayableTrack, isSonglinkTrack } from '$lib/types';
 
 	let { children, data } = $props();
-	const pageTitle = $derived(data?.title ?? 'KAYLUM PLUS: MÚSICA LIBRE');
+	const pageTitle = $derived(data?.title ?? 'KAYLUM ULTRA');
 	let headerHeight = $state(0);
 	let playerHeight = $state(0);
 	let viewportHeight = $state(0);
@@ -155,7 +155,7 @@
 			const artist = isSonglinkTrack(track) ? track.artistName : formatArtists(track.artists);
 			const title = track.title ?? 'Unknown Track';
 			const prefix = isPlaying ? '▶' : '⏸';
-			document.title = `${prefix} ${title} • ${artist} | Kaylum Plus`;
+			document.title = `${prefix} ${title} • ${artist} | Kaylum Ultra`;
 		} else {
 			document.title = pageTitle;
 		}
@@ -466,8 +466,8 @@
 			<div class="app-header__inner">
 				<a href="/" class="brand" aria-label="Home">
 					<div class="brand__text">
-						<h1 class="brand__title">KAYLUM PLUS</h1>
-						<p class="brand__subtitle">MÚSICA LIBRE</p>
+						<h1 class="brand__title">KAYLUM ULTRA</h1>
+						<p class="brand__subtitle">Reproductor de Música para el Fin del Mundo</p>
 					</div>
 				</a>
 
