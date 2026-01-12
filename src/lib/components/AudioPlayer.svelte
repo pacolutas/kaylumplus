@@ -550,6 +550,7 @@
 	}
 
 	function handlePrevious() {
+		if ($playerStore.currentTime > 3) {
 			playerStore.setCurrentTime(0);
 			updateMediaSessionPositionState();
 		} else {
