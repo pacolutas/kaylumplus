@@ -378,12 +378,12 @@
 		color: rgba(148, 163, 184, 0.7);
 	}
 
-	.track-row__icon--hover {
+	:global(.track-row__icon--hover) {
 		display: none;
 		color: #f8fafc;
 	}
 
-	.track-row__icon--active {
+	:global(.track-row__icon--active) {
 		color: #3b82f6;
 	}
 
@@ -391,7 +391,7 @@
 		display: none;
 	}
 
-	.track-row:hover .track-row__icon--hover {
+	.track-row:hover :global(.track-row__icon--hover) {
 		display: block;
 	}
 
