@@ -75,12 +75,7 @@
 	>();
 	let preloadingCacheKey: string | null = null;
 	const PRELOAD_THRESHOLD_SECONDS = 12;
-	const hiResQualities = new Set<AudioQuality>(['HI_RES_LOSSLESS']);
-	const dashManifestCache = new Map<string, DashManifestWithMetadata>();
-	let shakaNamespace: ShakaNamespace | null = null;
-	let shakaPlayer: ShakaPlayerInstance | null = null;
-	let hiResObjectUrl: string | null = null;
-	let shakaNetworkingConfigured = false;
+
 	const sampleRateLabel = $derived(formatSampleRate($playerStore.sampleRate));
 	const bitDepthLabel = $derived(formatBitDepth($playerStore.bitDepth));
 	const isFirefox = typeof navigator !== 'undefined' && /firefox/i.test(navigator.userAgent);
@@ -506,8 +501,7 @@
 					audio.src = cachedUrl;
 					currentPlaybackQuality = quality;
 					// Update metadata labels
-					bitDepthLabel = null;
-					samplingRateLabel = null;
+
 					
 					if ($playerStore.isPlaying) {
 						const playPromise = audio.play();
@@ -535,8 +529,7 @@
 				audio.src = url;
 				currentPlaybackQuality = quality;
 				// Update metadata labels - for AAC usually not applicable or standard
-				bitDepthLabel = null;
-				samplingRateLabel = null;
+
 
 				if ($playerStore.isPlaying) {
 					audio.play().catch(e => console.error('Play failed', e));
