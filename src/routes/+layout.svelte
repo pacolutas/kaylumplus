@@ -6,7 +6,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import AudioPlayer from '$lib/components/AudioPlayer.svelte';
 	import LyricsPopup from '$lib/components/LyricsPopup.svelte';
-	import DynamicBackgroundWebGL from '$lib/components/DynamicBackground.svelte';
+	import AnimatedBackground from '$lib/components/AnimatedBackground.svelte';
 	import { playerStore } from '$lib/stores/player';
 	import { downloadUiStore } from '$lib/stores/downloadUi';
 	import { downloadPreferencesStore, type DownloadMode } from '$lib/stores/downloadPreferences';
@@ -31,7 +31,7 @@
 	import { type Track, type AudioQuality, type PlayableTrack, isSonglinkTrack } from '$lib/types';
 
 	let { children, data } = $props();
-	const pageTitle = $derived(data?.title ?? 'Kaylum Plus');
+	const pageTitle = $derived(data?.title ?? 'KAYLUM PLUS: MÚSICA LIBRE');
 	let headerHeight = $state(0);
 	let playerHeight = $state(0);
 	let viewportHeight = $state(0);
@@ -460,14 +460,14 @@
 	<AudioPlayer headless={true} />
 {:else}
 	<div class="app-root">
-		<DynamicBackgroundWebGL />
+		<AnimatedBackground />
 		<div class="app-shell">
 			<header class="app-header glass-panel" bind:clientHeight={headerHeight}>
 			<div class="app-header__inner">
 				<a href="/" class="brand" aria-label="Home">
 					<div class="brand__text">
-						<h1 class="brand__title">Kaylum Plus</h1>
-						<p class="brand__subtitle">Un proyecto de AlterLabGen</p>
+						<h1 class="brand__title">KAYLUM PLUS</h1>
+						<p class="brand__subtitle">MÚSICA LIBRE</p>
 					</div>
 				</a>
 

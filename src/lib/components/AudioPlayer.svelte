@@ -520,7 +520,8 @@
 			const api = LosslessAPI.getInstance();
 			const streamData = await api.getStreamData(track.id, quality);
 			
-			let url = streamData.url;
+			// Critical Fix: Use proxy for playback to handle CORS/Auth
+			let url = getProxiedUrl(streamData.url);
 			
 			// Update cache
 			cacheStream(track.id, quality, url);
@@ -528,9 +529,8 @@
 			if (audio) {
 				audio.src = url;
 				currentPlaybackQuality = quality;
-				// Update metadata labels - for AAC usually not applicable or standard
-
-
+				// Update metadata labels
+				
 				if ($playerStore.isPlaying) {
 					audio.play().catch(e => console.error('Play failed', e));
 				}
