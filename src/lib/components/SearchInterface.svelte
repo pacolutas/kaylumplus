@@ -156,13 +156,7 @@
 
 	let albumDownloadStates = $state<Record<number, AlbumDownloadState>>({});
 
-		downloading: boolean;
-		completed: number;
-		total: number;
-		error: string | null;
-	};
 
-	let albumDownloadStates = $state<Record<number, AlbumDownloadState>>({});
 
 	const tutorialItems = [
 		{
