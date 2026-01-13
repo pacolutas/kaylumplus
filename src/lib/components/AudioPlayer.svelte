@@ -1780,7 +1780,7 @@
 					{/if}
 				{:else}
 					<div class="flex h-20 items-center justify-center text-sm text-gray-400">
-						Nothing is playing
+						Nada reproduciéndose
 					</div>
 				{/if}
 			</div>

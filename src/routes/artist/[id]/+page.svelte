@@ -54,7 +54,7 @@
 		const year = getReleaseYear(album.releaseDate ?? null);
 		if (year) parts.push(year);
 		if (album.type) parts.push(album.type.replace(/_/g, ' '));
-		if (album.numberOfTracks) parts.push(`${album.numberOfTracks} tracks`);
+		if (album.numberOfTracks) parts.push(`${album.numberOfTracks} canciones`);
 		if (parts.length === 0) return null;
 		return parts.join(' • ');
 	}
@@ -122,7 +122,7 @@
 				downloading: false,
 				completed: finalState?.total ?? finalState?.completed ?? 0,
 				error: failedCount > 0 
-					? `${failedCount} track${failedCount > 1 ? 's' : ''} failed after 3 attempts`
+					? `${failedCount} canción${failedCount > 1 ? 'es' : ''} fallaron tras 3 intentos`
 					: null
 			});
 		} catch (err) {
@@ -130,7 +130,7 @@
 			const message =
 				err instanceof Error && err.message
 					? err.message
-					: 'Failed to download album. Please try again.';
+					: 'Falló la descarga del álbum. Por favor intenta de nuevo.';
 			patchAlbumDownloadState(album.id, { downloading: false, error: message });
 		}
 	}
@@ -192,7 +192,7 @@
 				const message =
 					err instanceof Error && err.message
 						? err.message
-						: 'Failed to download part of the discography.';
+						: 'Falló la descarga de parte de la discografía.';
 				discographyError = message;
 				break;
 			}
@@ -236,13 +236,13 @@
 {:else if error}
 	<div class="mx-auto max-w-2xl py-12">
 		<div class="rounded-lg border border-red-900 bg-red-900/20 p-6">
-			<h2 class="mb-2 text-xl font-semibold text-red-400">Error Loading Artist</h2>
+			<h2 class="mb-2 text-xl font-semibold text-red-400">Error cargando artista</h2>
 			<p class="text-red-300">{error}</p>
 			<a
 				href="/"
 				class="mt-4 inline-flex rounded-lg bg-red-600 px-4 py-2 transition-colors hover:bg-red-700"
 			>
-				Go Home
+				Ir al inicio
 			</a>
 		</div>
 	</div>
@@ -254,7 +254,7 @@
 			class="flex items-center gap-2 text-gray-400 transition-colors hover:text-white"
 		>
 			<ArrowLeft size={20} />
-			Back
+			Volver
 		</button>
 
 		<!-- Artist Header -->
@@ -274,7 +274,7 @@
 
 			<!-- Artist Info -->
 			<div class="flex-1">
-				<p class="mb-2 text-sm text-gray-400">ARTIST</p>
+				<p class="mb-2 text-sm text-gray-400">ARTISTA</p>
 				<h1 class="mb-4 text-4xl font-bold md:text-6xl">{artist.name}</h1>
 
 				<div class="mb-6">
@@ -284,7 +284,7 @@
 				<div class="mb-6 flex flex-wrap items-center gap-4">
 					{#if artist.popularity}
 						<div class="text-sm text-gray-400">
-							Popularity: <span class="font-semibold text-white">{artist.popularity}</span>
+							Popularidad: <span class="font-semibold text-white">{artist.popularity}</span>
 						</div>
 					{/if}
 					{#if artist.artistTypes && artist.artistTypes.length > 0}
@@ -318,8 +318,8 @@
 			<section>
 				<div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
 					<div>
-						<h2 class="text-2xl font-semibold text-white">Top Tracks</h2>
-						<p class="text-sm text-gray-400">Best songs from {artist.name}.</p>
+						<h2 class="text-2xl font-semibold text-white">Top Canciones</h2>
+						<p class="text-sm text-gray-400">Mejores canciones de {artist.name}.</p>
 					</div>
 				</div>
 				{#if topTracks.length > 0}
@@ -330,7 +330,7 @@
 					<div
 						class="mt-6 rounded-lg border border-gray-800 bg-gray-900/40 p-6 text-sm text-gray-400"
 					>
-						<p>No top tracks available for this artist yet.</p>
+						<p>No hay canciones top disponibles para este artista todavía.</p>
 					</div>
 				{/if}
 			</section>
@@ -338,8 +338,8 @@
 			<section>
 				<div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 					<div>
-						<h2 class="text-2xl font-semibold text-white">Discography</h2>
-						<p class="text-sm text-gray-400">Albums, EPs, and more from {artist.name}.</p>
+						<h2 class="text-2xl font-semibold text-white">Discografía</h2>
+						<p class="text-sm text-gray-400">Álbumes, EPs, y más de {artist.name}.</p>
 					</div>
 					<div class="flex items-center gap-2">
 						<button
@@ -352,7 +352,7 @@
 							{#if isDownloadingDiscography}
 								<LoaderCircle size={16} class="animate-spin" />
 								<span class="whitespace-nowrap">
-									Downloading
+									Descargando
 									{#if discographyProgress.total > 0}
 										{discographyProgress.completed}/{displayTrackTotal(discographyProgress.total)}
 									{:else}
@@ -362,7 +362,7 @@
 								</span>
 							{:else}
 								<Download size={16} />
-								<span class="whitespace-nowrap">Download Discography</span>
+								<span class="whitespace-nowrap">Descargar discografía</span>
 							{/if}
 						</button>
 					</div>
@@ -421,7 +421,7 @@
 								</a>
 								{#if albumDownloadStates[album.id]?.downloading}
 									<p class="mt-3 text-xs text-blue-300">
-										Downloading
+										Descargando
 										{#if albumDownloadStates[album.id]?.total}
 											{albumDownloadStates[album.id]?.completed ?? 0}/{displayTrackTotal(
 												albumDownloadStates[album.id]?.total ?? 0
@@ -429,7 +429,7 @@
 										{:else}
 											{albumDownloadStates[album.id]?.completed ?? 0}
 										{/if}
-										tracks…
+										canciones…
 									</p>
 								{:else if albumDownloadStates[album.id]?.error}
 									<p class="mt-3 text-xs text-red-400" role="alert">
@@ -443,7 +443,7 @@
 					<div
 						class="mt-6 rounded-lg border border-gray-800 bg-gray-900/40 p-6 text-sm text-gray-400"
 					>
-						<p>Discography information isn&apos;t available right now.</p>
+						<p>La información de la discografía no está disponible ahora mismo.</p>
 					</div>
 				{/if}
 			</section>
@@ -456,7 +456,7 @@
 				rel="noopener noreferrer"
 				class="inline-block text-sm text-blue-400 transition-colors hover:text-blue-300"
 			>
-				View profile →
+				Ver perfil →
 			</a>
 		{/if}
 	</div>

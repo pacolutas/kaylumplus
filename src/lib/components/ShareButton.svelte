@@ -15,7 +15,7 @@
 	let { 
 		type, 
 		id, 
-		title = 'Share', 
+		title = 'Compartir', 
 		size = 20, 
 		iconOnly = false,
 		variant = 'ghost'
@@ -120,7 +120,7 @@
 			<Share2 size={size} />
 		{/if}
 		{#if !iconOnly}
-			<span>{copied ? 'Copied!' : 'Share'}</span>
+			<span>{copied ? '¡Copiado!' : 'Compartir'}</span>
 		{/if}
 	</button>
 
@@ -138,7 +138,7 @@
 				}}
 			>
 				<Link size={16} />
-				Copy Link
+				Copiar enlace
 			</button>
 			<button
 				class="flex w-full items-center gap-2 rounded px-3 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
@@ -148,7 +148,7 @@
 				}}
 			>
 				<Copy size={16} />
-				Copy Short Link
+				Copiar enlace corto
 			</button>
 			<button
 				class="flex w-full items-center gap-2 rounded px-3 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white"
@@ -158,7 +158,7 @@
 				}}
 			>
 				<Code size={16} />
-				Copy Embed Code
+				Copiar código embed
 			</button>
 		</div>
 	{/if}

@@ -1109,24 +1109,24 @@
 						class="flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 font-semibold transition-colors hover:bg-blue-700"
 					>
 						<Play size={20} fill="currentColor" />
-						Play All
+						Reproducir todo
 					</button>
 					<button
 						onclick={handleShuffleAll}
 						class="flex items-center gap-2 rounded-full bg-purple-600 px-6 py-3 font-semibold transition-colors hover:bg-purple-700"
 					>
 						<Shuffle size={20} />
-						Shuffle All
+						Reproducir aleatoriamente
 					</button>
 					<button
 						onclick={handleDownloadAll}
 						class="flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 font-semibold transition-colors hover:bg-green-700"
 					>
 						<Download size={20} />
-						Download All
+						Descargar todo
 					</button>
 					<div class="ml-auto text-sm text-gray-400">
-						{searchStore.tracks.length} of {searchStore.playlistConversionTotal} tracks
+						{searchStore.tracks.length} de {searchStore.playlistConversionTotal} canciones
 					</div>
 				</div>
 			{/if}

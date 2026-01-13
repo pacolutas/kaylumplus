@@ -47,7 +47,7 @@
 		const hours = Math.floor(seconds / 3600);
 		const minutes = Math.floor((seconds % 3600) / 60);
 		if (hours > 0) {
-			return `${hours} hr ${minutes} min`;
+			return `${hours} h ${minutes} min`;
 		}
 		return `${minutes} min`;
 	}
@@ -64,13 +64,13 @@
 {:else if error}
 	<div class="mx-auto max-w-2xl py-12">
 		<div class="rounded-lg border border-red-900 bg-red-900/20 p-6">
-			<h2 class="mb-2 text-xl font-semibold text-red-400">Error Loading Playlist</h2>
+			<h2 class="mb-2 text-xl font-semibold text-red-400">Error cargando playlist</h2>
 			<p class="text-red-300">{error}</p>
 			<a
 				href="/"
 				class="mt-4 inline-flex rounded-lg bg-red-600 px-4 py-2 transition-colors hover:bg-red-700"
 			>
-				Go Home
+				Ir al inicio
 			</a>
 		</div>
 	</div>
@@ -82,7 +82,7 @@
 			class="flex items-center gap-2 text-gray-400 transition-colors hover:text-white"
 		>
 			<ArrowLeft size={20} />
-			Back
+			Volver
 		</button>
 
 		<!-- Playlist Header -->
@@ -102,7 +102,7 @@
 
 			<!-- Playlist Info -->
 			<div class="flex flex-1 flex-col justify-end">
-				<p class="mb-2 text-sm text-gray-400">PLAYLIST</p>
+				<p class="mb-2 text-sm text-gray-400">LISTA</p>
 				<h1 class="mb-4 text-4xl font-bold md:text-6xl">{playlist.title}</h1>
 
 				{#if playlist.description}
@@ -125,7 +125,7 @@
 				</div>
 
 				<div class="mb-6 flex flex-wrap items-center gap-4 text-sm text-gray-400">
-					<div>{playlist.numberOfTracks} tracks</div>
+					<div>{playlist.numberOfTracks} canciones</div>
 					{#if playlist.duration}
 						<div class="flex items-center gap-1">
 							<Clock size={16} />
@@ -146,7 +146,7 @@
 							class="flex w-fit items-center gap-2 rounded-full bg-blue-600 px-8 py-3 font-semibold transition-colors hover:bg-blue-700"
 						>
 							<Play size={20} fill="currentColor" />
-							Play All
+							Reproducir todo
 						</button>
 						<ShareButton type="playlist" id={playlist.uuid} variant="secondary" />
 					</div>
@@ -157,7 +157,7 @@
 		<!-- Promoted Artists -->
 		{#if playlist.promotedArtists && playlist.promotedArtists.length > 0}
 			<div>
-				<h3 class="mb-3 text-sm font-semibold text-gray-400">Featured Artists</h3>
+				<h3 class="mb-3 text-sm font-semibold text-gray-400">Artistas destacados</h3>
 				<div class="flex flex-wrap gap-2">
 					{#each playlist.promotedArtists as artist}
 						<a
@@ -175,22 +175,22 @@
 		<!-- Tracks -->
 		{#if tracks.length > 0}
 			<div class="mt-8">
-				<h2 class="mb-4 text-2xl font-bold">Tracks</h2>
+				<h2 class="mb-4 text-2xl font-bold">Canciones</h2>
 				<TrackList {tracks} />
 			</div>
 		{:else}
 			<div class="rounded-lg bg-gray-800 p-6 text-gray-400">
-				<p>No tracks in this playlist.</p>
+				<p>No hay canciones en esta lista.</p>
 			</div>
 		{/if}
 
 		<!-- Metadata -->
 		<div class="space-y-1 text-xs text-gray-500">
 			{#if playlist.created}
-				<p>Created: {new Date(playlist.created).toLocaleDateString()}</p>
+				<p>Creada: {new Date(playlist.created).toLocaleDateString()}</p>
 			{/if}
 			{#if playlist.lastUpdated}
-				<p>Last updated: {new Date(playlist.lastUpdated).toLocaleDateString()}</p>
+				<p>Actualizada: {new Date(playlist.lastUpdated).toLocaleDateString()}</p>
 			{/if}
 		</div>
 	</div>

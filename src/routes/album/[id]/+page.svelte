@@ -110,14 +110,14 @@
 			);
 			
 			if (failedCount > 0) {
-				downloadError = `Download completed. ${failedCount} track${failedCount > 1 ? 's' : ''} failed after 3 attempts.`;
+				downloadError = `Descarga completada. ${failedCount} canción${failedCount > 1 ? 'es' : ''} fallaron tras 3 intentos.`;
 			}
 		} catch (err) {
 			console.error('Failed to download album:', err);
 			downloadError =
 				err instanceof Error && err.message
 					? err.message
-					: 'Failed to download one or more tracks.';
+					: 'Falló la descarga de una o más canciones.';
 		} finally {
 			isDownloadingAll = false;
 		}
@@ -137,13 +137,13 @@
 {:else if error}
 	<div class="mx-auto max-w-2xl py-12">
 		<div class="rounded-lg border border-red-900 bg-red-900/20 p-6">
-			<h2 class="mb-2 text-xl font-semibold text-red-400">Error Loading Album</h2>
+			<h2 class="mb-2 text-xl font-semibold text-red-400">Error cargando álbum</h2>
 			<p class="text-red-300">{error}</p>
 			<a
 				href="/"
 				class="mt-4 inline-flex rounded-lg bg-red-600 px-4 py-2 transition-colors hover:bg-red-700"
 			>
-				Go Home
+				Ir al inicio
 			</a>
 		</div>
 	</div>
@@ -155,7 +155,7 @@
 			class="back-btn"
 		>
 			<ArrowLeft size={20} />
-			Back
+			Volver
 		</button>
 
 		<!-- Album Header -->
@@ -187,7 +187,7 @@
 
 			<!-- Album Info -->
 			<div class="album-info">
-				<span class="album-type">ALBUM</span>
+				<span class="album-type">ÁLBUM</span>
 				<h1 class="album-title">{album.title}</h1>
 				<div class="album-artist-row">
 					{#if album.explicit}
@@ -226,13 +226,13 @@
 					{#if tracks.length > 0 || album.numberOfTracks}
 						<div class="meta-badge">
 							<Disc size={16} />
-							{tracks.length || album.numberOfTracks} tracks
+							{tracks.length || album.numberOfTracks} canciones
 						</div>
 					{/if}
 					{#if totalDuration > 0}
 						<div class="meta-badge">
 							<Clock size={16} />
-							{losslessAPI.formatDuration(totalDuration)} total
+							{losslessAPI.formatDuration(totalDuration)} en total
 						</div>
 					{/if}
 					{#if album.mediaMetadata?.tags}
@@ -249,14 +249,14 @@
 							class="btn btn--primary"
 						>
 							<Play size={20} fill="currentColor" />
-							Play All
+							Reproducir todo
 						</button>
 						<button
 							onclick={handleShufflePlay}
 							class="btn btn--accent"
 						>
 							<Shuffle size={18} />
-							Shuffle Play
+							Aleatorio
 						</button>
 						<button
 							onclick={handleDownloadAll}
@@ -265,8 +265,8 @@
 						>
 							<Download size={18} />
 							{isDownloadingAll
-								? `Downloading ${downloadedCount}/${tracks.length}`
-								: 'Download All'}
+								? `Descargando ${downloadedCount}/${tracks.length}`
+								: 'Descargar todo'}
 						</button>
 						<ShareButton type="album" id={album.id} variant="secondary" />
 					</div>
@@ -279,13 +279,12 @@
 
 		<!-- Tracks -->
 		<div class="tracks-section">
-			<h2 class="section-title">Tracks</h2>
+			<h2 class="section-title">Canciones</h2>
 			<TrackList {tracks} showAlbum={false} />
 			{#if tracks.length === 0}
 				<div class="warning-box">
 					<p>
-						We couldn't find tracks for this album. Try refreshing or searching for individual
-						songs.
+						No pudimos encontrar canciones para este álbum. Intenta refrescar o buscar canciones individuales.
 					</p>
 				</div>
 			{/if}
