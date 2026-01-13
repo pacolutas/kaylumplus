@@ -530,16 +530,18 @@
 			cacheStream(track.id, quality, finalUrl);
 
 			if (audioElement) {
-				// Update state instead of direct DOM manipulation to keep Svelte in sync
-				streamUrl = finalUrl;
+				// Revert to imperative logic which is often more reliable for media elements
+				audioElement.src = finalUrl;
+				audioElement.load(); // Force reload
 				currentPlaybackQuality = quality;
 				
 				if ($playerStore.isPlaying) {
 					console.log('[AudioPlayer] Auto-playing new track');
-					// Wait a tick for Svelte to update the DOM src attribute
-					setTimeout(() => {
-						audioElement.play().catch(e => console.error('[AudioPlayer] Play failed', e));
-					}, 0);
+					try {
+						await audioElement.play();
+					} catch (e) {
+						console.error('[AudioPlayer] Play failed', e);
+					}
 				}
 			} else {
 				console.error('[AudioPlayer] Audio element is missing!');
@@ -1128,7 +1130,6 @@
 
 <audio
 	bind:this={audioElement}
-	src={streamUrl}
 	ontimeupdate={handleTimeUpdate}
 	ondurationchange={handleDurationChange}
 	onended={handleEnded}
