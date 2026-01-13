@@ -31,7 +31,7 @@
 	import { type Track, type AudioQuality, type PlayableTrack, isSonglinkTrack } from '$lib/types';
 
 	let { children, data } = $props();
-	const pageTitle = $derived(data?.title ?? 'KAYLUM ULTRA V.2');
+	const pageTitle = $derived(data?.title ?? 'KAYLUM ULTRA V.2.1');
 	let headerHeight = $state(0);
 	let playerHeight = $state(0);
 	let viewportHeight = $state(0);
@@ -467,7 +467,7 @@
 			<div class="app-header__inner">
 				<a href="/" class="brand" aria-label="Home">
 					<div class="brand__text">
-						<h1 class="brand__title">KAYLUM ULTRA V.2</h1>
+						<h1 class="brand__title">KAYLUM ULTRA V.2.1</h1>
 						<p class="brand__subtitle">Reproductor de Música para el Fin del Mundo</p>
 					</div>
 				</a>
