@@ -495,7 +495,7 @@ export async function fetchWithCORS(
 			!target.baseUrl.includes('monochrome.tf');
 
 		if (isCustom) {
-			headers.set('X-Client', `BiniLossless/${APP_VERSION}`);
+			headers.set('X-Client', `KaylumUltra/${APP_VERSION}`);
 		}
 
 		try {

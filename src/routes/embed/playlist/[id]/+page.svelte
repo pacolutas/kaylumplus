@@ -112,7 +112,7 @@
                 <h1 class="title" title={playlist.title}>{playlist.title}</h1>
                 <p class="subtitle" title={playlist.description}>{playlist.description || 'Playlist'}</p>
                 <a href="/playlist/{playlist.uuid}" target="_blank" class="open-link">
-                    <span>Open Playlist in BiniLossless</span>
+                    <span>Abrir Playlist en Kaylum Ultra</span>
                     <ExternalLink size={12} />
                 </a>
             </div>

@@ -41,7 +41,8 @@
 		Play,
 		Shuffle,
 		Copy,
-		Code
+		Code,
+		ScrollText
 	} from 'lucide-svelte';
 
 	import { searchStore, type SearchTab } from '$lib/stores/searchStore.svelte';
@@ -155,9 +156,23 @@
 
 	let albumDownloadStates = $state<Record<number, AlbumDownloadState>>({});
 
-	const newsItems = [
+	const tutorialItems = [
 		{
-			title: 'Hi-Res downloading!!!',
+			title: '1. Buscar',
+			description:
+				"Usa la barra de búsqueda para encontrar tu música favorita. Puedes buscar por nombre de canción, artista, álbum o pegar un enlace de Spotify/Tidal."
+		},
+		{
+			title: '2. Seleccionar',
+			description:
+				"Haz clic en la canción o álbum que quieras escuchar. La aplicación cargará la información y preparará la reproducción en alta calidad."
+		},
+		{
+			title: '3. Reproducir o Descargar',
+			description:
+				"Escucha tu música al instante o usa el botón de descarga para guardarla en tu dispositivo. ¡Disfruta de Kaylum Ultra!"
+		}
+	];
 			description:
 				"You can finally download and stream in Hi-Res again because of a much better API. It should also be much faster - try it out for yourself!"
 		},
@@ -1558,37 +1573,40 @@
 			</div>
 			<!-- News Section -->
 		{:else if !searchStore.query.trim()}
-			<div class="news-container rounded-lg border p-4">
-				<h2 class="mb-4 text-3xl font-bold">News</h2>
-				<section class="grid gap-4 text-left shadow-lg sm:grid-cols-2">
-					{#each newsItems as item}
-						<article
-							class="news-card flex flex-col gap-3 rounded-lg border p-4 transition-transform hover:-translate-y-0.5"
-						>
-							<div class="flex items-center gap-3">
-								<div
-									class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-900/40 text-blue-300"
-								>
-									<Newspaper size={20} />
-								</div>
-								<h3 class="text-lg font-semibold text-white">{item.title}</h3>
-							</div>
-							<p class="text-sm text-gray-300">{item.description}</p>
-						</article>
+			<div class="z-10 mt-12 w-full max-w-5xl px-4">
+				<div class="mb-6 flex items-center gap-3">
+					<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-500/20 text-primary-400 backdrop-blur-md">
+						<ScrollText size={20} />
+					</div>
+					<h2 class="text-2xl font-bold text-white">Cómo funciona</h2>
+				</div>
+
+				<div class="grid gap-6 md:grid-cols-3">
+					{#each tutorialItems as item, i}
+						<div class="group relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/40 p-6 transition-all duration-300 hover:border-primary-500/30 hover:bg-slate-800/60">
+							<div class="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary-500/10 blur-[40px] transition-all duration-500 group-hover:bg-primary-500/20"></div>
+							
+							<h3 class="mb-3 text-lg font-bold text-primary-200">
+								{item.title}
+							</h3>
+							<p class="text-sm leading-relaxed text-slate-400">
+								{item.description}
+							</p>
+						</div>
 					{/each}
-				</section>
+				</div>
 			</div>
 		{:else if isQueryATidalUrl && !searchStore.isLoading}
 			<div class="py-12 text-center text-gray-400">
 				<div class="flex flex-col items-center gap-4">
 					<Link2 size={48} class="text-blue-400" />
-					<p class="text-lg text-white">Tidal URL detected</p>
-					<p class="text-sm">Press Enter or click Import to load this content</p>
+					<p class="text-lg text-white">URL de Tidal detectada</p>
+					<p class="text-sm">Presiona Enter o haz clic en Importar para cargar este contenido</p>
 				</div>
 			</div>
 		{:else if searchStore.query.trim() && !searchStore.isLoading && !isQueryATidalUrl}
 			<div class="py-12 text-center text-gray-400">
-				<p>No results found...</p>
+				<p>No se encontraron resultados...</p>
 			</div>
 		{/if}
 	{/if}

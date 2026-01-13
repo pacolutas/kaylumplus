@@ -116,7 +116,7 @@
                 {/if}
 
                 <a href="/track/{track.id}" target="_blank" class="open-link">
-                    <span>Open in BiniLossless</span>
+                    <span>Abrir en Kaylum Ultra</span>
                     <ExternalLink size={12} />
                 </a>
             </div>

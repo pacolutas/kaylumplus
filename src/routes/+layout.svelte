@@ -31,7 +31,7 @@
 	import { type Track, type AudioQuality, type PlayableTrack, isSonglinkTrack } from '$lib/types';
 
 	let { children, data } = $props();
-	const pageTitle = $derived(data?.title ?? 'BiniLossless');
+	const pageTitle = $derived(data?.title ?? 'KAYLUM ULTRA');
 	let headerHeight = $state(0);
 	let playerHeight = $state(0);
 	let viewportHeight = $state(0);
@@ -52,6 +52,10 @@
 	);
 
 	const isEmbed = $derived($page.url.pathname.startsWith('/embed'));
+
+	onMount(() => {
+		console.log('--- KAYLUM ULTRA V.2.2 LOADED ---');
+	});
 
 	$effect(() => {
 		const current = $playerStore.currentTrack;
@@ -176,7 +180,7 @@
 			const artist = isSonglinkTrack(track) ? track.artistName : formatArtists(track.artists);
 			const title = track.title ?? 'Unknown Track';
 			const prefix = isPlaying ? '▶' : '⏸';
-			document.title = `${prefix} ${title} • ${artist} | BiniLossless`;
+			document.title = `${prefix} ${title} • ${artist} | KAYLUM ULTRA`;
 		} else {
 			document.title = pageTitle;
 		}
@@ -487,8 +491,8 @@
 			<div class="app-header__inner">
 				<a href="/" class="brand" aria-label="Home">
 					<div class="brand__text">
-						<h1 class="brand__title">{data.title}</h1>
-						<p class="brand__subtitle">sailing on PCM tidal waves</p>
+						<h1 class="brand__title">KAYLUM PROJECT</h1>
+						<p class="brand__subtitle">KAYLUM ULTRA</p>
 					</div>
 				</a>
 
