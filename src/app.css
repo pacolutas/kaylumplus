@@ -9,7 +9,7 @@ button,
 a,
 [role='button'],
 summary {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 button:disabled,
@@ -18,7 +18,7 @@ button:disabled,
 [type='reset']:disabled,
 [role='button'][aria-disabled='true'],
 a[aria-disabled='true'] {
-	cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 /* ============================================
@@ -67,49 +67,62 @@ a[aria-disabled='true'] {
 }
 
 :root:not([data-performance='medium']):not([data-performance='low']) {
-	--perf-blur-high: 32px;
-	--perf-blur-medium: 28px;
-	--perf-blur-low: 24px;
-	--perf-saturate: 160%;
+  --perf-blur-high: 32px;
+  --perf-blur-medium: 28px;
+  --perf-blur-low: 24px;
+  --perf-saturate: 160%;
 }
 
 /* Enhanced Color Palette */
 :root {
-  /* Primary Blues */
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  
-  /* Accent Purples */
-  --color-accent-400: #a78bfa;
-  --color-accent-500: #8b5cf6;
-  --color-accent-600: #7c3aed;
-  
-  /* Neutrals (Slate) */
-  --color-neutral-50: #f8fafc;
-  --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
-  --color-neutral-300: #cbd5e1;
-  --color-neutral-400: #94a3b8;
-  --color-neutral-500: #64748b;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
-  --color-neutral-950: #020617;
-  
+  /* Warm Dark Iridescent Palette */
+  --color-primary-50: #fff1f2;
+  --color-primary-100: #ffe4e6;
+  --color-primary-200: #fecdd3;
+  --color-primary-300: #fda4af;
+  --color-primary-400: #fb7185;
+  --color-primary-500: #f43f5e;
+  --color-primary-600: #e11d48;
+  --color-primary-700: #be123c;
+  --color-primary-800: #9f1239;
+  --color-primary-900: #881337;
+
+  /* Accent Warm Tones (Orange/Gold) */
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+
+  /* Deep Backgrounds (Dark Purple/Black) */
+  --color-neutral-50: #fdf4ff;
+  --color-neutral-100: #fae8ff;
+  --color-neutral-200: #f5d0fe;
+  --color-neutral-300: #f0abfc;
+  --color-neutral-400: #e879f9;
+  --color-neutral-500: #d946ef;
+  --color-neutral-600: #c026d3;
+  --color-neutral-700: #a21caf;
+  --color-neutral-800: #86198f;
+  --color-neutral-900: #1a0524;
+  /* Deep purple-black */
+  --color-neutral-950: #0f0116;
+  /* Almost black */
+
+  --color-surface-100: rgba(26, 5, 36, 0.4);
+  --color-surface-200: rgba(26, 5, 36, 0.6);
+  --color-surface-300: rgba(26, 5, 36, 0.8);
+  --color-surface-400: #1a0524;
+
+  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Lighter border for contrast */
+  --glass-surface: rgba(15, 1, 22, 0.65);
+  /* Dark warm glass */
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+
   /* Semantic Colors */
   --color-success-500: #22c55e;
   --color-warning-500: #f59e0b;
   --color-error-500: #ef4444;
-  
+
   /* Spacing Scale */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -121,7 +134,7 @@ a[aria-disabled='true'] {
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
-  
+
   /* Border Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
@@ -129,12 +142,12 @@ a[aria-disabled='true'] {
   --radius-xl: 1rem;
   --radius-2xl: 1.25rem;
   --radius-full: 9999px;
-  
+
   /* Shadows */
   --shadow-glow-sm: 0 0 10px rgba(59, 130, 246, 0.15);
   --shadow-glow-md: 0 0 20px rgba(59, 130, 246, 0.2);
   --shadow-glow-lg: 0 0 40px rgba(59, 130, 246, 0.25);
-  
+
   /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -164,8 +177,15 @@ a[aria-disabled='true'] {
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Glass Effect Utilities */
@@ -211,7 +231,7 @@ a[aria-disabled='true'] {
 
 /* Card Styles */
 .card-interactive {
-  transition: 
+  transition:
     transform var(--transition-base),
     box-shadow var(--transition-base),
     border-color var(--transition-slow);
@@ -219,7 +239,7 @@ a[aria-disabled='true'] {
 
 .card-interactive:hover {
   transform: translateY(-2px) scale(1.01);
-  box-shadow: 
+  box-shadow:
     0 20px 50px rgba(2, 6, 23, 0.4),
     var(--shadow-glow-sm);
   border-color: rgba(148, 163, 184, 0.25);
@@ -237,7 +257,7 @@ a[aria-disabled='true'] {
     --perf-blur-low: 8px;
     --perf-saturate: 130%;
   }
-  
+
   :root[data-performance='medium'] {
     --perf-blur-high: 12px;
     --perf-blur-medium: 8px;
@@ -248,21 +268,22 @@ a[aria-disabled='true'] {
 
 /* Touch device optimizations */
 @media (pointer: coarse) {
+
   /* Disable hover effects that cause sticky states on touch */
   .hover-lift:hover {
     transform: none;
   }
-  
+
   /* Active state for touch feedback */
   .hover-lift:active {
     transform: scale(0.98);
   }
-  
+
   .card-interactive:hover {
     transform: none;
     box-shadow: none;
   }
-  
+
   .card-interactive:active {
     transform: scale(0.99);
     background: rgba(148, 163, 184, 0.08);
@@ -351,6 +372,7 @@ a[aria-disabled='true'] {
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -358,7 +380,7 @@ a[aria-disabled='true'] {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .gradient-text-hero {
     animation: none;
     background-size: 100% 100%;
@@ -371,33 +393,45 @@ a[aria-disabled='true'] {
 
 /* Simple fade for mobile (no transforms = cheaper) */
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 /* Slide animations using transform (GPU-accelerated) */
 @keyframes slide-up {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(10px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes slide-down {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(-10px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -405,8 +439,15 @@ a[aria-disabled='true'] {
 
 /* Pulse for loading states */
 @keyframes pulse-subtle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
 }
 
 .animate-pulse-subtle {
@@ -445,37 +486,52 @@ a[aria-disabled='true'] {
 
 /* figtree-regular - latin_latin-ext */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Figtree';
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/figtree-v9-latin_latin-ext-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('/fonts/figtree-v9-latin_latin-ext-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+  src: url('/fonts/figtree-v9-latin_latin-ext-regular.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('/fonts/figtree-v9-latin_latin-ext-regular.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
+
 /* figtree-italic - latin_latin-ext */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Figtree';
   font-style: italic;
   font-weight: 400;
-  src: url('/fonts/figtree-v9-latin_latin-ext-italic.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('/fonts/figtree-v9-latin_latin-ext-italic.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+  src: url('/fonts/figtree-v9-latin_latin-ext-italic.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('/fonts/figtree-v9-latin_latin-ext-italic.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
+
 /* figtree-700 - latin_latin-ext */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Figtree';
   font-style: normal;
   font-weight: 700;
-  src: url('/fonts/figtree-v9-latin_latin-ext-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('/fonts/figtree-v9-latin_latin-ext-700.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+  src: url('/fonts/figtree-v9-latin_latin-ext-700.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('/fonts/figtree-v9-latin_latin-ext-700.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
+
 /* figtree-700italic - latin_latin-ext */
 @font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-display: swap;
+  /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Figtree';
   font-style: italic;
   font-weight: 700;
-  src: url('/fonts/figtree-v9-latin_latin-ext-700italic.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-       url('/fonts/figtree-v9-latin_latin-ext-700italic.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+  src: url('/fonts/figtree-v9-latin_latin-ext-700italic.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('/fonts/figtree-v9-latin_latin-ext-700italic.ttf') format('truetype');
+  /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
 }
