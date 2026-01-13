@@ -6,7 +6,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import AudioPlayer from '$lib/components/AudioPlayer.svelte';
 	import LyricsPopup from '$lib/components/LyricsPopup.svelte';
-	import DynamicBackgroundWebGL from '$lib/components/DynamicBackground.svelte';
+	import DynamicBackgroundWebGL from '$lib/components/DynamicBackgroundWebGL.svelte';
 	import { playerStore } from '$lib/stores/player';
 	import { downloadUiStore } from '$lib/stores/downloadUi';
 	import { downloadPreferencesStore, type DownloadMode } from '$lib/stores/downloadPreferences';
