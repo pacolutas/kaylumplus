@@ -917,12 +917,12 @@
 						bind:value={searchStore.query}
 						onkeypress={handleKeyPress}
 						placeholder={isQueryATidalUrl
-							? 'Tidal URL detected - press Enter to import'
+							? 'URL de Tidal detectada - presiona Enter para importar'
 							: isQueryASpotifyPlaylist
-								? 'Spotify playlist detected - press Enter to convert'
+								? 'Playlist de Spotify detectada - presiona Enter para convertir'
 								: isQueryAStreamingUrl
-									? `${getPlatformName(searchStore.query)} URL detected - press Enter to convert`
-									: 'Search for tracks, albums, artists... or paste a URL'}
+									? `${getPlatformName(searchStore.query)} URL detectada - presiona Enter para convertir`
+									: 'Buscar canciones, álbumes, artistas... o pegar una URL'}
 						class="w-full min-w-0 flex-1 border-none bg-transparent p-0 pl-1 text-white ring-0 placeholder:text-gray-400 focus:outline-none"
 					/>
 				</div>
@@ -975,16 +975,16 @@
 					>
 						{#if isQueryASpotifyPlaylist}
 							<Link2 size={16} class="text-white" />
-							<span class="hidden sm:inline">{searchStore.isLoading ? 'Converting…' : 'Convert Playlist'}</span>
+							<span class="hidden sm:inline">{searchStore.isLoading ? 'Convirtiendo…' : 'Convertir Playlist'}</span>
 						{:else if isQueryAStreamingUrl}
 							<Link2 size={16} class="text-white" />
-							<span class="hidden sm:inline">{searchStore.isLoading ? 'Converting…' : 'Convert & Play'}</span>
+							<span class="hidden sm:inline">{searchStore.isLoading ? 'Convirtiendo…' : 'Convertir y Reproducir'}</span>
 						{:else if isQueryATidalUrl}
 							<Link2 size={16} class="text-white" />
-							<span class="hidden sm:inline">{searchStore.isLoading ? 'Importing…' : 'Import'}</span>
+							<span class="hidden sm:inline">{searchStore.isLoading ? 'Importando…' : 'Importar'}</span>
 						{:else}
 							<Search size={16} class="text-white" />
-							<span class="hidden sm:inline">{searchStore.isLoading ? 'Searching…' : 'Search'}</span>
+							<span class="hidden sm:inline">{searchStore.isLoading ? 'Buscando…' : 'Buscar'}</span>
 						{/if}
 					</button>
 				</div>
@@ -1003,7 +1003,7 @@
 					: 'border-transparent text-gray-300 hover:text-white'}"
 			>
 				<Music size={18} />
-				<span class="text-sm sm:text-base">Tracks</span>
+				<span class="text-sm sm:text-base">Canciones</span>
 			</button>
 			<button
 				onclick={() => handleTabChange('albums')}
@@ -1013,7 +1013,7 @@
 					: 'border-transparent text-gray-300 hover:text-white'}"
 			>
 				<Disc size={18} />
-				<span class="text-sm sm:text-base">Albums</span>
+				<span class="text-sm sm:text-base">Álbumes</span>
 			</button>
 			<button
 				onclick={() => handleTabChange('artists')}
@@ -1023,7 +1023,7 @@
 					: 'border-transparent text-gray-300 hover:text-white'}"
 			>
 				<User size={18} />
-				<span class="text-sm sm:text-base">Artists</span>
+				<span class="text-sm sm:text-base">Artistas</span>
 			</button>
 			<button
 				onclick={() => handleTabChange('playlists')}
@@ -1033,7 +1033,7 @@
 					: 'border-transparent text-gray-300 hover:text-white'}"
 			>
 				<List size={18} />
-				<span class="text-sm sm:text-base">Playlists</span>
+				<span class="text-sm sm:text-base">Listas</span>
 			</button>
 		</div>
 	{/if}
@@ -1509,7 +1509,7 @@
 						<h3 class="truncate font-semibold text-white group-hover:text-blue-400">
 							{artist.name}
 						</h3>
-						<p class="text-xs text-gray-500">Artist</p>
+						<p class="text-xs text-gray-500">Artista</p>
 					</a>
 				{/each}
 			</div>
@@ -1534,7 +1534,7 @@
 							{playlist.title}
 						</h3>
 						<p class="truncate text-sm text-gray-400">{playlist.creator.name}</p>
-						<p class="text-xs text-gray-500">{playlist.numberOfTracks} tracks</p>
+						<p class="text-xs text-gray-500">{playlist.numberOfTracks} canciones</p>
 					</a>
 			{/each}
 			</div>

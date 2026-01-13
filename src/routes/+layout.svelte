@@ -62,7 +62,7 @@
 		if (current && !isSonglinkTrack(current)) {
 			const newPath = `/track/${current.id}`;
 			const isTrackPage = $page.url.pathname.startsWith('/track/');
-
+			
 			if ($page.url.pathname !== newPath && !$navigating) {
 				if (isTrackPage) {
 					goto(newPath, { keepFocus: true, noScroll: true });
@@ -75,9 +75,9 @@
 	const mainMarginBottom = $derived(() => Math.max(playerHeight, 128));
 	const settingsMenuOffset = $derived(() => Math.max(0, headerHeight + 12));
 	const FRIENDLY_ROUTE_MESSAGES: Record<string, string> = {
-		album: 'Opening album',
-		artist: 'Visiting artist',
-		playlist: 'Loading playlist'
+		album: 'Abriendo álbum',
+		artist: 'Visitando artista',
+		playlist: 'Cargando playlist'
 	};
 
 	const QUALITY_OPTIONS: Array<{ value: AudioQuality; label: string; description: string; disabled?: boolean }> = [
@@ -166,7 +166,7 @@
 			return FRIENDLY_ROUTE_MESSAGES[key]!;
 		}
 		const normalized = key.replace(/[-_]+/g, ' ');
-		return `Loading ${normalized.charAt(0).toUpperCase()}${normalized.slice(1)}`;
+		return `Cargando ${normalized.charAt(0).toUpperCase()}${normalized.slice(1)}`;
 	});
 
 	// Update page title with currently playing song
@@ -272,7 +272,7 @@
 		const { tracks, quality } = collectQueueState();
 		if (tracks.length === 0) {
 			showSettingsMenu = false;
-			alert('Add tracks to the queue before exporting.');
+			alert('Añade canciones a la cola antes de exportar.');
 			return;
 		}
 
@@ -366,7 +366,7 @@
 		const { tracks, quality } = collectQueueState();
 		if (tracks.length === 0) {
 			showSettingsMenu = false;
-			alert('Add tracks to the queue before downloading.');
+			alert('Añade canciones a la cola antes de descargar.');
 			return;
 		}
 
@@ -506,11 +506,11 @@
 							class={`toolbar-button glass-button ${showSettingsMenu ? 'is-active' : ''}`}
 							aria-haspopup="true"
 							aria-expanded={showSettingsMenu}
-							aria-label={`Settings menu (${playbackQualityLabel()})`}
+							aria-label={`Menú de configuración (${playbackQualityLabel()})`}
 						>
 							<span class="toolbar-button__label">
 								<Settings size={16} />
-								<span class="toolbar-button__text">Settings</span>
+								<span class="toolbar-button__text">Configuración</span>
 							</span>
 							<span class="text-gray-400">{playbackQualityLabel()}</span>
 							<span class={`toolbar-button__chevron ${showSettingsMenu ? 'is-open' : ''}`}>
@@ -650,7 +650,7 @@
 										</div>
 									</section>
 									<section class="settings-section settings-section--bordered">
-										<p class="section-heading">Queue actions</p>
+										<p class="section-heading">Acciones de la cola</p>
 										<div class="actions-column">
 											<button
 												onclick={handleQueueDownload}
@@ -661,13 +661,13 @@
 												<span class="glass-action__label">
 													{#if downloadMode === 'zip'}
 														<Archive size={16} />
-														<span>Download queue</span>
+														<span>Descargar cola</span>
 													{:else if downloadMode === 'csv'}
 														<FileSpreadsheet size={16} />
-														<span>Export queue links</span>
+														<span>Exportar enlaces</span>
 													{:else}
 														<Download size={16} />
-														<span>Download queue</span>
+														<span>Descargar cola</span>
 													{/if}
 												</span>
 												{#if queueActionBusy}
@@ -682,7 +682,7 @@
 											>
 												<span class="glass-action__label">
 													<FileSpreadsheet size={16} />
-													<span>Export links as CSV</span>
+													<span>Exportar enlaces como CSV</span>
 												</span>
 												{#if isCsvExporting}
 													<LoaderCircle size={16} class="glass-action__spinner" />
@@ -690,8 +690,8 @@
 											</button>
 										</div>
 										<p class="section-footnote">
-											Queue actions follow your selection above. ZIP bundles require at least two tracks,
-											while CSV exports capture the track links without downloading audio.
+											Las acciones siguen tu selección anterior. Los ZIP requieren al menos dos canciones,
+											mientras que CSV exporta los enlaces sin descargar el audio.
 										</p>
 									</section>
 								</div>

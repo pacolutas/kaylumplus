@@ -1564,7 +1564,7 @@
 									onclick={handlePrevious}
 									class="p-1.5 sm:p-2 text-gray-400 transition-colors hover:text-white disabled:opacity-50"
 									disabled={false}
-									aria-label="Previous track"
+									aria-label="Anterior canción"
 								>
 									<SkipBack size={18} class="sm:w-5 sm:h-5" />
 								</button>
@@ -1572,7 +1572,7 @@
 								<button
 									onclick={() => playerStore.togglePlay()}
 									class="rounded-full bg-white p-2.5 sm:p-3 text-gray-900 transition-transform hover:scale-105"
-									aria-label={$playerStore.isPlaying ? 'Pause' : 'Play'}
+									aria-label={$playerStore.isPlaying ? 'Pausar' : 'Reproducir'}
 								>
 									{#if $playerStore.isPlaying}
 										<Pause size={20} class="sm:w-6 sm:h-6" fill="currentColor" />
@@ -1585,7 +1585,7 @@
 									onclick={() => playerStore.next()}
 									class="p-1.5 sm:p-2 text-gray-400 transition-colors hover:text-white disabled:opacity-50"
 									disabled={$playerStore.queueIndex >= $playerStore.queue.length - 1}
-									aria-label="Next track"
+									aria-label="Siguiente canción"
 								>
 									<SkipForward size={18} class="sm:w-5 sm:h-5" />
 								</button>
@@ -1596,7 +1596,7 @@
 								<button
 									onclick={handleDownloadCurrentTrack}
 									class="player-toggle-button p-1.5 sm:p-2"
-									aria-label="Download current track"
+									aria-label="Descargar canción actual"
 									type="button"
 									disabled={!$playerStore.currentTrack || isDownloadingCurrentTrack}
 								>
